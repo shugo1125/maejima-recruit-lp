@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>エンジニア採用の最適化 | X発信ではじめる「資産型」採用</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0B1F3A;
+    --navy2:#13315C;
+    --gold:#C9A961;
+    --gold-d:#B8924A;
+    --red:#B23A48;
+    --ink:#0B1F3A;
+    --slate:#4A5E7E;
+    --slate2:#6B7B96;
+    --line:#D9E0EC;
+    --bg:#ffffff;
+    --bg-soft:#F6F8FB;
+    --bg-soft2:#EEF2F8;
+    --maxw:1180px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"Noto Sans JP",-apple-system,BlinkMacSystemFont,sans-serif;
+    color:var(--ink);background:var(--bg);line-height:1.85;letter-spacing:.01em;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none}
+  .en{font-family:"Inter",sans-serif}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  .eyebrow{
+    font-family:"Inter",sans-serif;font-size:13px;font-weight:600;letter-spacing:.3em;
+    color:var(--gold-d);margin-bottom:16px;
+  }
+  .eyebrow.red{color:var(--red)}
+  .eyebrow.navy{color:var(--navy2)}
+
+  .btn{
+    display:inline-flex;align-items:center;gap:9px;padding:16px 34px;border-radius:6px;
+    font-weight:700;font-size:16px;background:var(--gold);color:var(--navy);
+    transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+    box-shadow:0 10px 26px rgba(201,169,97,.3);white-space:nowrap;
+  }
+  .btn:hover{transform:translateY(-2px);background:var(--gold-d);box-shadow:0 14px 32px rgba(201,169,97,.4)}
+  .btn-ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.35);box-shadow:none}
+  .btn-ghost:hover{background:rgba(255,255,255,.08);box-shadow:none}
+
+  /* Header */
+  header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  header::before{content:"";display:block;height:6px;background:var(--navy)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:66px}
+  .logo{display:flex;align-items:center;gap:11px;font-weight:700;font-size:18px;color:var(--navy)}
+  .logo .mk{width:36px;height:36px;border-radius:7px;background:var(--navy);display:grid;place-items:center;color:var(--gold);font-family:"Inter";font-weight:800;font-size:17px}
+  .nav-links{display:flex;gap:28px;align-items:center;font-size:14px;font-weight:500;color:var(--slate)}
+  .nav-links a:not(.btn):hover{color:var(--navy)}
+  .nav .btn{padding:11px 22px;font-size:14px;color:var(--navy)}
+  @media(max-width:900px){.nav-links a:not(.btn){display:none}}
+
+  section{padding:96px 0}
+  .stripe{height:8px;background:var(--navy)}
+  h2{font-size:clamp(26px,3.7vw,46px);font-weight:700;line-height:1.4;letter-spacing:.01em;color:var(--navy)}
+  h2 .red{color:var(--red)}
+  h2 .navy2{color:var(--navy2)}
+  .lead{color:var(--slate);font-size:clamp(15px,1.9vw,20px);margin-top:18px;max-width:820px}
+  .divider{height:1px;background:var(--line);margin:34px 0 56px}
+
+  /* ===== 01 HERO ===== */
+  .hero{position:relative;background:linear-gradient(180deg,var(--navy) 0%,var(--navy2) 100%);color:#fff;overflow:hidden;padding:104px 0 110px}
+  .hero::before{content:"";position:absolute;right:-160px;top:60px;font-family:"Inter";font-size:520px;font-weight:800;color:rgba(255,255,255,.03);line-height:1;z-index:0}
+  .hero .wrap{position:relative;z-index:1}
+  .hero .tag{font-family:"Inter";font-size:18px;font-weight:600;letter-spacing:.32em;color:var(--gold)}
+  .hero .rule{width:72px;height:4px;background:var(--gold);margin:26px 0 30px}
+  .hero h1{font-size:clamp(34px,5.6vw,66px);font-weight:700;line-height:1.4;letter-spacing:.02em}
+  .hero .purpose{
+    margin-top:40px;max-width:760px;background:rgba(255,255,255,.05);
+    border-left:4px solid var(--gold);border-radius:0 10px 10px 0;padding:26px 30px;
+  }
+  .hero .purpose .pl{font-family:"Inter";font-size:12px;letter-spacing:.28em;color:var(--gold);font-weight:600;margin-bottom:10px}
+  .hero .purpose p{font-size:clamp(17px,2.2vw,24px);font-weight:500;line-height:1.7}
+  .hero .purpose b{color:var(--gold)}
+  .hero .quote{margin-top:34px;max-width:760px;color:#C9D2E0;font-size:15px}
+  .hero .quote b{color:#fff;font-weight:700}
+  .hero .cta{margin-top:44px;display:flex;gap:14px;flex-wrap:wrap}
+
+  /* ===== 02 PAINS ===== */
+  .pains{background:#fff}
+  .pain-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  @media(max-width:860px){.pain-grid{grid-template-columns:1fr}}
+  .pain{background:#fff;border:1px solid var(--line);border-top:4px solid var(--red);border-radius:4px;padding:38px 34px;box-shadow:0 10px 30px rgba(11,31,58,.05)}
+  .pain .no{font-family:"Inter";font-size:14px;font-weight:700;letter-spacing:.3em;color:var(--red);margin-bottom:22px}
+  .pain h3{font-size:clamp(22px,2.6vw,28px);font-weight:700;line-height:1.5;color:var(--navy)}
+  .pain .hr{height:1px;background:var(--bg-soft2);margin:26px 0 20px}
+  .pain .metric-l{font-family:"Inter";font-size:12px;font-weight:600;letter-spacing:.22em;color:var(--slate2);margin-bottom:8px}
+  .pain .metric{font-family:"Inter";font-size:clamp(40px,5vw,58px);font-weight:800;line-height:1;letter-spacing:-.02em;color:var(--navy)}
+  .pain .metric small{font-size:.44em;font-weight:700;color:var(--slate);margin-left:4px;letter-spacing:0}
+  .pain p{margin-top:18px;color:var(--slate);font-size:15px;line-height:1.75}
+  .hypo{margin-top:52px;background:var(--bg-soft);border-radius:10px;padding:34px 40px;text-align:center}
+  .hypo .el{font-family:"Inter";font-size:12px;letter-spacing:.28em;color:var(--gold-d);font-weight:600;margin-bottom:12px}
+  .hypo p{font-size:clamp(18px,2.4vw,26px);font-weight:500;color:var(--navy)}
+  .hypo b{color:var(--navy2);font-weight:700}
+
+  /* ===== 03 SOLUTION ===== */
+  .sol{background:var(--bg-soft)}
+  .fromto{display:grid;grid-template-columns:1fr auto 1fr;gap:20px;align-items:center;margin-bottom:36px}
+  @media(max-width:760px){.fromto{grid-template-columns:1fr;gap:10px}}
+  .ft{border-radius:6px;padding:26px 30px}
+  .ft.from{background:#fff;border:1px dashed #A8B3C5}
+  .ft.to{background:var(--navy);border-left:6px solid var(--gold);color:#fff}
+  .ft .l{font-family:"Inter";font-size:12px;font-weight:600;letter-spacing:.3em;margin-bottom:10px}
+  .ft.from .l{color:var(--slate2)} .ft.to .l{color:var(--gold)}
+  .ft.from .t{color:var(--slate2);font-size:clamp(18px,2.4vw,25px);font-weight:600}
+  .ft.to .t{color:#fff;font-size:clamp(18px,2.4vw,25px);font-weight:700}
+  .arrow{font-family:"Inter";font-size:48px;font-weight:300;color:var(--gold);text-align:center}
+  @media(max-width:760px){.arrow{transform:rotate(90deg)}}
+  .vals{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  @media(max-width:860px){.vals{grid-template-columns:1fr}}
+  .val{background:#fff;border:1px solid var(--line);border-top:4px solid var(--navy2);border-radius:4px;padding:36px 32px}
+  .val .l{font-family:"Inter";font-size:13px;font-weight:700;letter-spacing:.3em;color:var(--navy2);margin-bottom:18px}
+  .val h3{font-size:clamp(20px,2.4vw,26px);font-weight:700;color:var(--navy);margin-bottom:18px}
+  .val .big{font-family:"Inter";font-size:clamp(34px,4.4vw,52px);font-weight:800;line-height:1;letter-spacing:-.02em;color:var(--navy)}
+  .val .big small{font-size:.5em;font-weight:700}
+  .val .big.txt{font-size:clamp(30px,3.6vw,44px)}
+  .val p{margin-top:20px;color:var(--slate);font-size:15px;line-height:1.75}
+  .proposal{margin-top:52px;background:var(--navy);color:#fff;border-radius:10px;padding:38px 44px;text-align:center}
+  .proposal .el{font-family:"Inter";font-size:12px;letter-spacing:.28em;color:var(--gold);font-weight:600;margin-bottom:12px}
+  .proposal p{font-size:clamp(18px,2.4vw,26px);font-weight:500}
+  .proposal b{color:var(--gold);font-weight:700}
+
+  /* ===== 04 PRICING ===== */
+  .pricing{background:#fff}
+  .tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  @media(max-width:860px){.tiles{grid-template-columns:1fr}}
+  .tile{background:var(--bg-soft);border-radius:6px;padding:44px 36px;text-align:left}
+  .tile.hi{background:var(--navy);border-top:6px solid var(--gold);color:#fff}
+  .tile .l{font-family:"Inter";font-size:14px;font-weight:600;letter-spacing:.3em;color:var(--slate2);margin-bottom:14px}
+  .tile.hi .l{color:var(--gold)}
+  .tile .name{font-size:clamp(22px,2.6vw,28px);font-weight:700;color:var(--navy);margin-bottom:22px}
+  .tile.hi .name{color:#fff}
+  .tile .amt{font-family:"Inter";font-size:clamp(72px,11vw,120px);font-weight:800;line-height:1;letter-spacing:-.04em;color:var(--navy)}
+  .tile.hi .amt{color:#fff;font-size:clamp(64px,10vw,110px)}
+  .tile .amt small{font-size:.5em;font-weight:700}
+  .tile .bar{width:60px;height:3px;background:var(--navy);margin:26px 0 18px}
+  .tile.hi .bar{background:var(--gold)}
+  .tile p{color:var(--slate);font-size:14.5px;line-height:1.7}
+  .tile.hi p{color:#C9D2E0}
+  .risknote{margin-top:40px;text-align:center;color:var(--slate);font-size:15px}
+  .risknote b{color:var(--red);font-weight:700}
+
+  /* ===== 05 NEXT STEP ===== */
+  .next{background:var(--bg-soft)}
+  .next-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  @media(max-width:900px){.next-grid{grid-template-columns:1fr}}
+  .panel{background:#fff;border:1px solid var(--line);border-radius:6px;padding:40px 38px}
+  .panel .l{font-family:"Inter";font-size:14px;font-weight:700;letter-spacing:.3em;color:var(--navy2);margin-bottom:14px}
+  .panel h3{font-size:clamp(21px,2.5vw,28px);font-weight:700;color:var(--navy);margin-bottom:30px}
+  .mixrow{display:flex;align-items:center;gap:16px;margin-bottom:16px}
+  .mixbar{height:44px;border-radius:3px;display:flex;align-items:center;padding:0 16px;color:#fff;font-weight:500;font-size:15px;white-space:nowrap}
+  .mixbar.a{background:var(--navy2)} .mixbar.b{background:var(--slate)} .mixbar.c{background:var(--gold);color:var(--navy)}
+  .mixpct{font-family:"Inter";font-size:22px;font-weight:800;color:var(--navy);margin-left:auto}
+  .mixrow.small .mixpct{color:var(--navy)}
+  .mixcap{margin-top:22px;padding-top:20px;border-top:1px solid var(--bg-soft2);color:var(--slate);font-size:14.5px;line-height:1.75}
+  .panel.kpi{background:var(--bg-soft);border:none}
+  .panel.kpi .l{color:var(--gold-d)}
+  .kpirow{display:flex;align-items:flex-end;gap:16px;justify-content:space-between}
+  .kpi-item{flex:1;text-align:center}
+  .kpi-item .m{font-family:"Inter";font-size:12px;font-weight:700;letter-spacing:.2em;color:var(--slate2);margin-bottom:8px}
+  .kpi-item .role{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:14px}
+  .kpi-item .num{font-family:"Inter";font-weight:800;line-height:1;color:var(--navy2)}
+  .kpi-item .num small{font-size:.4em;color:var(--slate);margin-left:3px}
+  .kpi-item:nth-child(1) .num{font-size:32px}
+  .kpi-item:nth-child(2) .num{font-size:42px}
+  .kpi-item:nth-child(3) .num{font-size:56px;color:var(--gold-d)}
+  .kpi-item .sub{margin-top:12px;color:var(--slate);font-size:13px;line-height:1.6}
+  .kpitrack{height:2px;background:var(--line);margin:20px 0 4px;position:relative}
+  .kpitrack::after{content:"";position:absolute;left:0;top:0;height:2px;width:100%;background:linear-gradient(90deg,var(--navy2),var(--gold))}
+
+  /* Final CTA */
+  .final{background:linear-gradient(180deg,var(--navy2),var(--navy));color:#fff;text-align:center}
+  .final .el{font-family:"Inter";font-size:13px;letter-spacing:.3em;color:var(--gold);font-weight:600;margin-bottom:18px}
+  .final h2{color:#fff;font-size:clamp(26px,4vw,44px)}
+  .final p{color:#C9D2E0;margin:18px auto 38px;max-width:600px}
+  .final .cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+  footer{background:var(--navy);color:#8C9AB3;padding:34px 0;font-size:13px}
+  .foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+  <div class="wrap nav">
+    <div class="logo"><span class="mk" style="font-size:11px;letter-spacing:.03em">SNS</span> SNS採用マーケティングラボ</div>
+    <nav class="nav-links">
+      <a href="#pain">課題</a>
+      <a href="#solution">解決策</a>
+      <a href="#pricing">費用</a>
+      <a href="#next">進め方</a>
+    </nav>
+  </div>
+</header>
+
+<!-- 01 HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="tag">X RECRUITING / エンジニア採用支援</div>
+    <div class="rule"></div>
+    <h1>広告費に頼らない、<br>「資産型」のエンジニア採用へ。</h1>
+    <div class="purpose">
+      <div class="pl">CONCEPT</div>
+      <p>求人媒体・人材紹介に払い続ける採用から、<br>X（旧Twitter）で<b>自社にファンが集まる採用</b>へ。</p>
+    </div>
+    <p class="quote">「お金を払って募集する」から「自社でファンをつくる」へ。<b>初期費用・月額0円の完全成果報酬</b>で、私たちが伴走します。</p>
+    <div class="cta">
+      <a href="#solution" class="btn btn-ghost">解決策を見る ↓</a>
+    </div>
+  </div>
+</section>
+
+<!-- 02 PAINS -->
+<section id="pain" class="pains">
+  <div class="wrap">
+    <div class="eyebrow red">SECTION 02 / CURRENT ISSUES</div>
+    <h2>エンジニア採用における<span class="red">「3つの痛み」</span></h2>
+    <p class="lead">多くの企業が直面している、エンジニア採用のリアルな課題。</p>
+    <div class="divider"></div>
+    <div class="pain-grid">
+      <div class="pain">
+        <div class="no">PAIN 01</div>
+        <h3>媒体掲載費が<br>毎年積み上がる</h3>
+        <div class="hr"></div>
+        <div class="metric-l">ANNUAL SPEND</div>
+        <div class="metric en">¥3,000,000<small>+</small></div>
+        <p>年間で発生する求人媒体への掲載費。成果に関わらず固定で発生。</p>
+      </div>
+      <div class="pain">
+        <div class="no">PAIN 02</div>
+        <h3>採用ごとに<br>高額な紹介手数料</h3>
+        <div class="hr"></div>
+        <div class="metric-l">FEE RATE</div>
+        <div class="metric en">30<small>% ↑</small></div>
+        <p>年収の30%超が紹介会社に支払われ、一人あたりの採用単価が高止まり。</p>
+      </div>
+      <div class="pain">
+        <div class="no">PAIN 03</div>
+        <h3>ノウハウが<br>社内に残らない</h3>
+        <div class="hr"></div>
+        <div class="metric-l">DEPENDENCY</div>
+        <div class="metric en">100<small>%</small></div>
+        <p>媒体・紹介会社に依存し、自社に採用ノウハウ・母集団が蓄積されない。</p>
+      </div>
+    </div>
+    <div class="hypo">
+      <div class="el">OUR APPROACH</div>
+      <p>この3つを解消できれば、<b>採用予算を大きく圧縮しながら、質の高い採用</b>が実現できます。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 03 SOLUTION -->
+<section id="solution" class="sol">
+  <div class="wrap">
+    <div class="eyebrow navy">SECTION 03 / OUR SOLUTION</div>
+    <h2>広告費から<span class="navy2">「採用力」</span>へのシフト</h2>
+    <p class="lead">X（旧Twitter）を起点とした、自社発信型のエンジニア採用へ。</p>
+    <div class="divider"></div>
+    <div class="fromto">
+      <div class="ft from">
+        <div class="l">FROM / CURRENT</div>
+        <div class="t">媒体に広告費を払い続ける採用</div>
+      </div>
+      <div class="arrow">→</div>
+      <div class="ft to">
+        <div class="l">TO / ASSET-DRIVEN</div>
+        <div class="t">自社発信で人が集まる「資産型」採用</div>
+      </div>
+    </div>
+    <div class="vals">
+      <div class="val">
+        <div class="l">01 COST</div>
+        <h3>コストを削減する</h3>
+        <div class="big en">−57.4<small>%</small></div>
+        <p>求人媒体に頼らず自社発信で採用。最大57.4%の採用コスト削減が見込めます。</p>
+      </div>
+      <div class="val">
+        <div class="l">02 QUALITY</div>
+        <h3>採用の質を上げる</h3>
+        <div class="big txt en">Direct.</div>
+        <p>欲しいエンジニアと直接つながる。カルチャーフィットする人材を獲得。</p>
+      </div>
+      <div class="val">
+        <div class="l">03 ASSET</div>
+        <h3>資産として残す</h3>
+        <div class="big txt en">In-House</div>
+        <p>運用ノウハウ・フォロワー・発信実績、すべてが自社の社内資産として蓄積。</p>
+      </div>
+    </div>
+    <div class="proposal">
+      <div class="el">OUR PROPOSAL</div>
+      <p>お金を払って募集するのではなく、<b>自社でファンをつくる運用</b>を、私たちが伴走してサポートします。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 04 PRICING -->
+<section id="pricing" class="pricing">
+  <div class="wrap">
+    <div class="eyebrow navy">SECTION 04 / PRICING</div>
+    <h2>リスクゼロのパートナーシップ</h2>
+    <p class="lead">完全成果報酬プラン — 成果が出るまで、費用は発生しません。</p>
+    <div class="divider"></div>
+    <div class="tiles">
+      <div class="tile">
+        <div class="l">INITIAL COST</div>
+        <div class="name">初期費用</div>
+        <div class="amt en">¥0</div>
+        <div class="bar"></div>
+        <p>導入時のセットアップ費用、一切いただきません。</p>
+      </div>
+      <div class="tile">
+        <div class="l">MONTHLY FIXED</div>
+        <div class="name">月額固定費</div>
+        <div class="amt en">¥0</div>
+        <div class="bar"></div>
+        <p>継続的な固定費は発生しません。運用期間中も完全無料。</p>
+      </div>
+      <div class="tile hi">
+        <div class="l">SUCCESS FEE</div>
+        <div class="name">成功報酬</div>
+        <div class="amt en">20<small>%</small></div>
+        <div class="bar"></div>
+        <p>採用が成立した場合のみ、成功報酬をいただきます。成果が出るまで費用は¥0。</p>
+      </div>
+    </div>
+    <p class="risknote">初期費用¥0・月額¥0。<b>成果が出るまで、費用は発生しません。</b></p>
+  </div>
+</section>
+
+<!-- 05 NEXT STEP -->
+<section id="next" class="next">
+  <div class="wrap">
+    <div class="eyebrow navy">SECTION 05 / NEXT STEP</div>
+    <h2>まずは<span class="navy2">3ヶ月</span>から、一緒に踏み出す</h2>
+    <p class="lead">明日からはじめる、X発信アクションプラン。</p>
+    <div class="divider"></div>
+    <div class="next-grid">
+      <div class="panel">
+        <div class="l">ACTION 01 / CONTENT MIX</div>
+        <h3>発信コンテンツの黄金比</h3>
+        <div class="mixrow">
+          <div class="mixbar a" style="width:70%">有益情報</div>
+          <div class="mixpct en">70%</div>
+        </div>
+        <div class="mixrow">
+          <div class="mixbar b" style="width:40%">親近感・人間味</div>
+          <div class="mixpct en">20%</div>
+        </div>
+        <div class="mixrow small">
+          <div class="mixbar c" style="width:20%">募集</div>
+          <span style="color:var(--navy);font-weight:500;font-size:15px">熱いスカウト・募集</span>
+          <div class="mixpct en">10%</div>
+        </div>
+        <div class="mixcap">技術・ノウハウの発信で価値を届け、人柄で共感を生み、最後に募集を載せる。採用色を出しすぎず、自然にファンを増やす運用設計です。</div>
+      </div>
+      <div class="panel kpi">
+        <div class="l">ACTION 02 / FOLLOWER KPI</div>
+        <h3>3ヶ月のフォロワー目標</h3>
+        <div class="kpirow">
+          <div class="kpi-item">
+            <div class="m">MONTH 01</div>
+            <div class="role">運用立ち上げ</div>
+            <div class="num en">300<small>人</small></div>
+            <div class="sub">プロフィール設計と発信習慣の確立</div>
+          </div>
+          <div class="kpi-item">
+            <div class="m">MONTH 02</div>
+            <div class="role">エンゲージ拡大</div>
+            <div class="num en">600<small>人</small></div>
+            <div class="sub">バズ施策とエンジニア層への接触</div>
+          </div>
+          <div class="kpi-item">
+            <div class="m">MONTH 03</div>
+            <div class="role">スカウト稼働</div>
+            <div class="num en">1,000<small>人</small></div>
+            <div class="sub">採用ファネル稼働・直接スカウト開始</div>
+          </div>
+        </div>
+        <div class="kpitrack"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Final CTA -->
+<section id="cta" class="final">
+  <div class="wrap">
+    <div class="el">LET'S START</div>
+    <h2>広告費に頼らない採用を、<br>ここから一緒に。</h2>
+    <p>初期費用・月額は0円。成果が出るまで、費用は一切発生しません。</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <div>© 2026 SNS採用マーケティングラボ — X発信ではじめる「資産型」採用</div>
+    <div class="en">X RECRUITING / エンジニア採用支援</div>
+  </div>
+</footer>
+
+</body>
+</html>
